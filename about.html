@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- The viewport makes CSS responsive layouts use the actual device width where it is needed. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AccountaDay helps you plan your day, follow through, and reflect on your progress. Explore our fictional productivity business.">
+  <title>About us | AccountaDay</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <!-- Every page shares the same CSS and JavaScript; here is where the defer waits until the HTML is parsed. -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- Keyboard users can bypass repeated navigation with this link. allowing for a more complete user experience. -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="AccountaDay home"><span class="brand-icon" aria-hidden="true">a.</span>AccountaDay<span class="brand-period">.</span></a>
+      <!-- Without JavaScript, navigation remains visible. JS reveals the mobile toggle. -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html" aria-current="page">About us</a>
+          <a href="pictures.html">Pictures</a>
+          <a href="products.html">Products & services</a>
+          <a href="contact.html">Contact us</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <!-- Each page has one h1, followed by logically ordered section headings. -->
+    <section class="container page-hero">
+      <p class="eyebrow">OUR PURPOSE</p>
+      <h1>Big goals start with<br><span class="blue-text">small commitments.</span></h1>
+      <p class="lead">We believe a productive day should feel intentional, not overwhelming. AccountaDay brings planning and honest reflection into one simple routine.</p>
+    </section>
+    <section class="container about-story section-bottom">
+      <div class="statement-panel"><span class="eyebrow">OUR MISSION</span>
+      <h2>Help people do what they said they would do.</h2>
+      <p>With structure, perspective, and room to be human.</p>
+    </div>
+      <div>
+      <p class="eyebrow">THE ACCOUNTADAY IDEA</p>
+      <h2>A plan is only the beginning.</h2>
+      <p>To-do lists tell us what needs doing. They rarely help us understand why things didn’t happen. AccountaDay is a fictional personal productivity business built around that missing piece: accountability.</p>
+      <p>Our concept connects goals, deadlines, and routines to a daily plan, then uses activity reports to make progress visible. A missed task becomes useful information for tomorrow.</p>
+      <p>We aim to serve students balancing assignments, professionals juggling projects, and anyone building more consistent habits.</p>
+    </div>
+    </section>
+    <section class="tinted-section">
+      <div class="container">
+      <p class="eyebrow">WHAT WE STAND FOR</p>
+      <h2>Support that keeps you moving.</h2>
+      <div class="three-grid values">
+      <article><span class="step-number">01</span>
+      <h3>Clarity over clutter</h3>
+      <p>Bring your priorities into focus with a manageable plan and understandable reports.</p>
+    </article>
+      <article><span class="step-number">02</span>
+      <h3>Honesty over perfection</h3>
+      <p>Record completed, skipped, delayed, and rescheduled work without turning a difficult day into a personal failure.</p>
+    </article>
+      <article><span class="step-number">03</span>
+      <h3>Progress over pressure</h3>
+      <p>Look for patterns, adjust your approach, and celebrate the commitments you keep.</p>
+    </article>
+    </div>
+    </div>
+    </section>
+    <section class="container closing-section">
+      <div>
+      <p class="eyebrow">OUR PLACE IN THE MARKET</p>
+      <h2>Planning meets reflection.</h2>
+      <p class="measure">AccountaDay’s proposed difference is a complete daily feedback loop: organize, act, report, and adjust. This student website introduces the concept and demonstrates task tracking.</p>
+    </div><a class="button" href="pictures.html">See the concept <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  <!-- This shared footer repeats important links and identifies the fictional business. Again we have to tell them all about us. lol -->
+  <footer class="site-footer">
+      <div class="container footer-inner">
+    <div><a class="brand footer-brand" href="index.html">AccountaDay.</a>
+      <p>Plan it. Do it. Own it.</p>
+    </div>
+    <div><a href="about.html">Our purpose</a><a href="contact.html">Let’s talk</a>
+      <p>© 2026 AccountaDay. Fictional student business.</p>
+    </div>
+  </div></footer>
+</body>
+</html>

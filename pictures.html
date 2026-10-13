@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- The viewport makes CSS responsive layouts use the actual device width. Again, as neededd. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AccountaDay helps you plan your day, follow through, and reflect on your progress. Explore our fictional productivity business.">
+  <title>Pictures | AccountaDay</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <!-- Every page shares the same CSS and JavaScript; defer waits until the HTML is parsed. -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- Keyboard users can bypass repeated navigation with this link. -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="AccountaDay home"><span class="brand-icon" aria-hidden="true">a.</span>AccountaDay<span class="brand-period">.</span></a>
+      <!-- Without JavaScript, navigation remains visible. JS reveals the mobile toggle. -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About us</a>
+          <a href="pictures.html" aria-current="page">Pictures</a>
+          <a href="products.html">Products & services</a>
+          <a href="contact.html">Contact us</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="container page-hero">
+      <p class="eyebrow">PICTURE A MORE INTENTIONAL DAY</p>
+      <h1>See the plan.<br><span class="blue-text">See the progress.</span></h1>
+      <p class="lead">A visual tour of the AccountaDay concept, from daily priorities to the bigger picture. Select an image for a closer look.</p>
+    </section>
+    <!-- Real local SVG images stay sharp at any screen size. Links work even without JavaScript. -->
+    <section class="container section-bottom" aria-label="AccountaDay picture gallery">
+      <div class="gallery-grid">
+      <figure class="gallery-card"><a class="gallery-link" href="images/daily-dashboard.svg" data-caption="Your day at a glance — A sample dashboard connects your plan to your progress.">
+      <img src="images/daily-dashboard.svg" width="720" height="520" alt="Daily dashboard showing four tasks, three completed, and 75 percent progress." loading="lazy"><span class="image-action">View image <span aria-hidden="true">↗</span></span></a>
+      <figcaption>
+      <h2>Your day at a glance</h2>
+      <p>A sample dashboard connects your plan to your progress.</p></figcaption>
+    </figure>
+      <figure class="gallery-card"><a class="gallery-link" href="images/weekly-report.svg" data-caption="The weekly perspective — Sample completion rates help you spot stronger days and changing routines.">
+      <img src="images/weekly-report.svg" width="720" height="520" alt="Illustrative weekly bar chart with daily completion percentages of 60, 80, 40, 100, and 75." loading="lazy"><span class="image-action">View image <span aria-hidden="true">↗</span></span></a>
+      <figcaption>
+      <h2>The weekly perspective</h2>
+      <p>Sample completion rates help you spot stronger days and changing routines.</p></figcaption>
+    </figure>
+      <figure class="gallery-card"><a class="gallery-link" href="images/goal-map.svg" data-caption="Small actions. Bigger goals. — A simple goal map connects a long-term ambition with everyday actions.">
+      <img src="images/goal-map.svg" width="720" height="520" alt="Goal diagram connecting finish a course to study sessions, practice exercises, and a weekly review." loading="lazy"><span class="image-action">View image <span aria-hidden="true">↗</span></span></a>
+      <figcaption>
+      <h2>Small actions. Bigger goals.</h2>
+      <p>A simple goal map connects a long-term ambition with everyday actions.</p></figcaption>
+    </figure>
+      <figure class="gallery-card"><a class="gallery-link" href="images/daily-flow.svg" data-caption="A routine that comes full circle — Plan, act, reflect, and adjust. Each day teaches you something about the next.">
+      <img src="images/daily-flow.svg" width="720" height="520" alt="Four-step workflow: plan your priorities, act on the next task, reflect on results, and adjust tomorrow." loading="lazy"><span class="image-action">View image <span aria-hidden="true">↗</span></span></a>
+      <figcaption>
+      <h2>A routine that comes full circle</h2>
+      <p>Plan, act, reflect, and adjust. Each day teaches you something about the next.</p></figcaption>
+    </figure>
+    </div>
+      <p class="demo-note">Original AccountaDay graphics. All figures are illustrative examples, not customer results.</p>
+    </section>
+    <!-- Native dialog supplies modal focus behavior; JS also restores focus when it closes. -->
+    <dialog id="lightbox" aria-labelledby="lightbox-caption">
+      <button id="close-lightbox" class="small-button" type="button" autofocus>Close image <span aria-hidden="true">×</span></button>
+      <img id="lightbox-image" alt="">
+      <p id="lightbox-caption"></p></dialog>
+  </main>
+  <!-- This shared footer repeats important links and identifies the fictional business and possible real business after the semester :). -->
+  <footer class="site-footer">
+      <div class="container footer-inner">
+    <div><a class="brand footer-brand" href="index.html">AccountaDay.</a>
+      <p>Plan it. Do it. Own it.</p>
+    </div>
+    <div><a href="about.html">Our purpose</a><a href="contact.html">Let’s talk</a>
+      <p>© 2026 AccountaDay. Fictional student business.</p>
+    </div>
+  </div></footer>
+</body>
+</html>

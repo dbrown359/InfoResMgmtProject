@@ -1,182 +1,175 @@
 <!DOCTYPE html>
-<!-- HTML describes the content and structure. All paths are relative, so this folder can move to another computer. This was done intentionally
-to allow for flexibility and to further test and understand where debugging needs to be done. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- The viewport makes CSS responsive layouts use the actual device width. The purpose of this snippet is to make it work with the different
-  screens sizes that are avaiable and to scale accordingly.  -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AccountaDay helps you plan your day, follow through, and reflect on your progress. Explore our fictional productivity business.">
-  <title>Plan it. Do it. Own it. | AccountaDay</title>
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <!-- Every page shares the same CSS and JavaScript; defer waits until the HTML is parsed. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AccountaDay</title>
+  <link rel="icon" type="image/png" href="images/logo-cropped.png">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
 </head>
 <body>
-  <!-- This next section will align the company branding and provides the links between all five pages. With it we have a menu button where JavaScript allows mobile 
-  device usage. I have also added accessibility link improvements and the <main> is where our primray content begins. -->
-  <!-- The first line allows keyboard users to bypass repeated navigation with this link. -->
-  <a class="skip-link" href="#main">Skip to main content</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="AccountaDay home"><span class="brand-icon" aria-hidden="true">a.</span>AccountaDay<span class="brand-period">.</span></a>
-      <!-- Without JavaScript, navigation remains visible. JS reveals the mobile toggle. -->
-      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
-      <nav id="primary-nav" aria-label="Main navigation">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="about.html">About us</a>
-          <a href="pictures.html">Pictures</a>
-          <a href="products.html">Products & services</a>
-          <a href="contact.html">Contact us</a>
-      </nav>
-    </div>
-  </header>
-  <main id="main" tabindex="-1">
-    <!-- Now let's create the section where we introduce the company with some headline, description and provide calls to action that will allow a us to take the user to a daily-plan demo or to the 
-	Prodcuts and Services page where dsiplay an example dashboard showing how the company tracks daily progress. We also have included alternative text making the images accessible. With our hero strip
-	we give insight to our 3 step concept behind the business" Plan it, Do it, and Own it. we ahave made csss classes throughout -->
-	
-	<!-- Hero: the primary introduction includes real links to the demo and service page. -->
-    <section class="hero container">
-      <div class="hero-copy">
-      <p class="eyebrow"><span class="small-line"></span> A little structure. A lot more follow-through.</p>
-        <h1>Take control<br>of <span class="blue-text">your day.</span></h1>
-        <p class="lead">AccountaDay combines organization, automation, and accountability to help you turn your goals into daily action.</p>
-        <div class="button-row"><a class="button" href="#daily-demo">Try your daily plan <span aria-hidden="true">↗</span></a><a class="text-link" href="products.html">Explore the features <span aria-hidden="true">→</span></a>
-    </div>
-        <p class="hero-note">Less mental clutter. More intentional progress.</p>
-      </div>
-      <div class="hero-visual">
-      <div class="visual-label"><span>YOUR DAY, WITH DIRECTION</span><span>01 / PLAN</span>
-    </div>
-      <img src="images/daily-dashboard.svg" width="720" height="520" alt="Example daily dashboard: three of four tasks completed, a 75 percent completion rate, and one writing task still planned.">
-      <div class="visual-caption"><span class="lime-tag">Small steps count.</span><span>Make today a day you can feel good about.</span>
-    </div>
-    </div>
-    </section>
-    <div class="promise-strip">
-      <div class="container"><span>Plan it.</span>
-      <p>Know what matters.</p><span>Do it.</span>
-      <p>Make room for action.</p><span>Own it.</span>
-      <p>Learn from your day.</p>
-    </div>
-    </div>
-    <!-- Now let's move on to the AccountaDay 3 step process. 1st let's help organize their goals, responsibilities, routines, and deadlines, 2nd we will encourage them to break thei rlonger goals into smaller ones that are
-	more manageable allowing for their day to be more realistic and less overwhelming, 3rd is wehre our accountability piece comes by having someone else review their day and they were able to complete, what changed and reest unfinished
-	priorities for another day. I used HTML elements to organize the information (i.e <section>, <article>, <h2>, & <h3>) and allowed for CSS to control how the section looks using three-grid, steps and step-number -->
-	
-	<!-- Three steps communicate the business concept without requiring any JavaScript. -->
-    <section class="section container">
-      <div class="section-heading">
-      <div>
-      <p class="eyebrow">FROM INTENTION TO ACTION</p>
-      <h2>A better rhythm,<br>one day at a time.</h2>
-    </div>
-      <p>Organization gives you a plan. Accountability helps you keep moving.</p>
-    </div>
-      <div class="three-grid steps">
-      <article><span class="step-number">01</span>
-      <h3>Give your goals a place.</h3>
-      <p>Bring your responsibilities, routines, and deadlines together. Decide what deserves your attention.</p>
-    </article>
-      <article><span class="step-number">02</span>
-      <h3>Make a realistic plan.</h3>
-      <p>Break big goals into manageable tasks. Arrange your day around your priorities and available time.</p>
-    </article>
-      <article><span class="step-number">03</span>
-      <h3>Reflect. Then reset.</h3>
-      <p>See what you completed, what changed, and what needs another chance. Progress starts with an honest picture.</p>
-    </article>
-    </div>
-    </section>
-    <!-- This section launches the interactive AccountaDay planner demo, linked to the homepage’s “Try your daily plan” button. 
-		Users can add tasks, update their status, and watch the progress report update. The planner stays hidden until JavaScript loads; 
-		if it’s disabled, a <noscript> message appears. IDs like planner-app support the script, while CSS classes such as planner-grid 
-		and planner-panel define layout and responsiveness. -->
-	
-	<!-- The interactive demo is local to this browser. Its markup gives JS stable IDs to select. -->
-    <section class="demo-section" id="daily-demo">
-      <div class="container">
-      <div class="section-heading">
-      <div>
-      <p class="eyebrow">PUT IT INTO PRACTICE</p>
-      <h2>Your day. Your next move.</h2>
-    </div>
-      <p>Try a small version of AccountaDay. Add a task, update its status, and watch your report change.</p>
-    </div>
-      <noscript>
-      <p class="notice">Enable JavaScript to use the daily planner demo. All other pages and links still work.</p></noscript>
-      <div id="planner-app" hidden>
-      <div class="planner-grid">
-      <div class="planner-panel">
-      <div class="panel-heading">
-      <h3>Daily plan</h3><span class="pill">Interactive demo</span>
-    </div>
-        <!-- Here is where start running the AccountaDay planner demo, letting users add and sort tasks, validate entries, and see live updates 
-		to the accountability panel, including completion percentage, progress bar, summary, and status counts. It also provides 
-		report‑download and reset options, stores demo data locally, and ends by directing visitors to the Products and Services page. -->
 
-		
-		<!-- Required and maxlength provide built-in validation before JS processes the form.  -->
-        <form id="task-form" class="task-form">
-      <div>
-      <label for="task-name">What will you work on?</label>
-      <input id="task-name" name="task" required maxlength="100" placeholder="e.g., Review tomorrow’s priorities">
+  <div class="top-bar">
+    <div>
+      <span>User: </span>
+      <strong id="user-display">Guest (Not Logged In)</strong>
     </div>
-      <div>
-      <label for="task-priority">Priority</label>
-      <select id="task-priority" name="priority">
-      <option>High</option>
-      <option selected>Medium</option>
-      <option>Low</option></select>
+    <button id="auth-btn" class="btn btn-green btn-small" onclick="handleAuth()">Login</button>
+  </div>
+
+  <header>
+    <div class="brand-container" onclick="showTab('home')">
+      <img src="images/logo-cropped.png" alt="AccountaDay Logo" class="site-logo">
     </div>
-      <button class="button" type="submit">Add task</button>
-    </form>
-        <div class="task-toolbar">
-      <p>Choose an honest status for each task.</p>
-      <button id="sort-tasks" class="small-button" type="button">Order by priority</button>
-    </div>
-        <ul id="task-list" class="task-list" aria-label="Your daily tasks">
-    </ul>
-      <p id="task-feedback" class="feedback" role="status"></p>
+    <nav>
+      <button class="nav-btn active" onclick="showTab('home')">Home</button>
+      <button class="nav-btn" onclick="showTab('about')">About</button>
+      <button class="nav-btn" onclick="showTab('planner')">My Goals</button>
+      <button class="nav-btn" onclick="showTab('instructor')">Coach Portal</button>
+      <button class="nav-btn" onclick="showTab('contact')">Contact</button>
+      <button class="nav-btn" onclick="showTab('login')">Login</button>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <div id="home-page" class="tab-page active">
+      <div class="card home-hero-card">
+        <div class="home-logo-box">
+          <img src="images/logo.png" alt="AccountaDay Logo" class="home-main-logo">
+        </div>
+        <h1>Achieve your personal goals with 1-on-1 coaching.</h1>
+        <p>Set a target like learning to drive in 60 days. Your coach creates your roadmap and tracks your progress.</p>
+        <button class="btn btn-blue" onclick="showTab('planner')">View My Goals</button>
+        <button class="btn btn-green" onclick="showTab('instructor')">Open Coach Portal</button>
       </div>
-      <aside class="report-panel" aria-labelledby="report-heading">
-      <p class="eyebrow">THE BIG PICTURE</p>
-      <h3 id="report-heading">Daily accountability</h3>
-      <div class="completion"><strong id="completion-percent">0%</strong><span>completed</span>
+
+      <div class="card">
+        <h3>How It Works</h3>
+        <p>1. You define a major goal and target deadline.</p>
+        <p>2. Your assigned instructor breaks it into short daily milestones.</p>
+        <p>3. You complete steps and update your progress.</p>
+      </div>
     </div>
-      <label class="sr-only" for="completion-progress">Task completion percentage</label><progress id="completion-progress" max="100" value="0">0%</progress>
-      <p id="report-summary" aria-live="polite"></p>
-      <dl id="status-counts" class="status-counts">
-    </dl>
-      <button id="download-report" class="button button-lime" type="button">Download daily report</button>
-      <button id="reset-demo" class="reset-button" type="button">Reset sample tasks</button>
-    </aside>
+
+    <div id="about-page" class="tab-page">
+      <div class="card">
+        <h2>About AccountaDay</h2>
+        <p>AccountaDay is a personal accountability and mentorship platform designed to help anyone achieve real-life goals.</p>
+        <p>Instead of trying to accomplish big targets alone, users are paired with a dedicated instructor who breaks long-term plans into manageable, bite-sized daily milestones.</p>
+        <p>Whether your goal is learning how to drive in 60 days, building a fitness routine, or preparing for an exam, our structured roadmaps and real-time coach feedback keep you consistent and motivated.</p>
+        
+        <div class="about-images">
+          <div class="about-img-box">
+            <img src="images/Goals-1.png" alt="Goal Planning Roadmap">
+            <p>Target Roadmap & Timeline</p>
+          </div>
+          <div class="about-img-box">
+            <img src="images/Goals-2.webp" alt="Milestone Tracking">
+            <p>Milestone Execution & Monitoring</p>
+          </div>
+        </div>
+      </div>
     </div>
-      <p id="storage-note" class="demo-note">Demo only. Tasks are saved in this browser when storage is available. No account or cloud sync.</p>
+
+    <div id="planner-page" class="tab-page">
+      <div class="card">
+        <h3>Main Target: <span id="goal-title-text">Learn Driving & Pass Road Test</span></h3>
+        <p>Timeline: <strong id="goal-days-text">60 Days</strong> | Instructor: <strong>Dr. David Brown</strong></p>
+        
+        <form onsubmit="saveMainGoal(event)" class="goal-form">
+          <input type="text" id="goal-input-title" placeholder="New goal title" required>
+          <input type="text" id="goal-input-days" placeholder="e.g. 60 Days" required>
+          <button type="submit" class="btn btn-blue">Update Goal</button>
+        </form>
+      </div>
+
+      <div class="grid-2">
+        <div class="card col-left">
+          <h3>Coach-Assigned Milestones</h3>
+          <ul id="milestone-list"></ul>
+        </div>
+
+        <div class="card col-right">
+          <h3>Progress</h3>
+          <h1 id="progress-percent">0%</h1>
+          <progress id="progress-bar" value="0" max="100"></progress>
+          <p id="progress-text">0 of 0 completed</p>
+          <button class="btn btn-green full-width" onclick="downloadReport()">Download Report</button>
+        </div>
+      </div>
     </div>
+
+    <div id="instructor-page" class="tab-page">
+      <div class="card">
+        <h2>Coach Management Dashboard</h2>
+        <p>Mentee: <strong>Borhan Chowdhury</strong></p>
+        <p>Current Target: <strong id="coach-goal-display">Learn Driving & Pass Road Test</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Assign a Short Milestone</h3>
+        <form onsubmit="coachAddMilestone(event)">
+          <input type="text" id="milestone-input" placeholder="e.g. Practice parallel parking" required>
+          <select id="milestone-priority">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <button type="submit" class="btn btn-blue">Assign</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Milestone Checklist</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="coach-table-body"></tbody>
+        </table>
+      </div>
     </div>
-    </section>
-    <section class="container closing-section">
-      <div>
-      <p class="eyebrow">BUILD A DAY THAT WORKS FOR YOU</p>
-      <h2>More clarity.<br>More follow-through.</h2>
-    </div><a class="button" href="products.html">Meet your everyday toolkit <span aria-hidden="true">↗</span></a>
-    </section>
-  </main>
-  <!-- This shared footer repeats important links and identifies the fictional business for now. This is something tHat I hope to pursue
-  further after the semester to assist people trying to accomplish what I am working to accomplish and that is to better organize my day
-  and impress upon myself intentionality -->
-  <footer class="site-footer">
-      <div class="container footer-inner">
-    <div><a class="brand footer-brand" href="index.html">AccountaDay.</a>
-      <p>Plan it. Do it. Own it.</p>
+
+    <div id="contact-page" class="tab-page">
+      <div class="card form-box">
+        <h2>Contact Coaching Team</h2>
+        <form onsubmit="handleContact(event)">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea rows="3" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn btn-blue">Send</button>
+          <p id="contact-msg"></p>
+        </form>
+      </div>
     </div>
-    <div><a href="about.html">Our purpose</a><a href="contact.html">Let’s talk</a>
-      <p>© 2026 AccountaDay. Fictional student business.</p>
+
+    <div id="login-page" class="tab-page">
+      <div class="card form-box">
+        <h2>Account Login</h2>
+        <form onsubmit="doLogin(event)">
+          <input type="text" id="user-input" placeholder="Enter Name" required>
+          <input type="password" id="pass-input" placeholder="Enter Password" required>
+          <select id="role-input">
+            <option value="Mentee">User / Mentee</option>
+            <option value="Instructor">Instructor / Coach</option>
+          </select>
+          <button type="submit" class="btn btn-blue full-width">Sign In</button>
+        </form>
+      </div>
     </div>
-  </div></footer>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 AccountaDay. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>

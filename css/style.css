@@ -1,51 +1,264 @@
-/* ACCOUNTADAY — SHARED STYLESHEET
-   CSS controls presentation; HTML still supplies the meaning and reading order.
-   Each page uses this file so colors, spacing, navigation, and butt0ns match. */
-
-/* 1. DESIGN TOKENS: If you need to update the brand here is where we change the custom properties to do that.
-   System fonts are already installed on the visitor's computer and work offline. */
-:root {
-  --ink: #14223c;
-  --muted: #526078;
-  --blue: #214fec;
-  --blue-dark: #173ab1;
-  --lime: #d4fa73;
-  --pale: #edf2ff;
-  --line: #dce3ef;
-  --white: #fff;
-  --error: #b12727;
-  --radius: 18px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  color: var(--ink);
-  background: var(--white);
-  line-height: 1.6;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
-/* border-box counts padding inside width, avoiding accidental oversized boxes. */
-* { box-sizing: border-box; }
-body { margin: 0; }
-[hidden] { display: none !important; }
-img { display: block; max-width: 100%; height: auto; }
-button, input, select, textarea { font: inherit; }
-button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
-a { color: var(--blue); text-underline-offset: 4px; }
-button, select { cursor: pointer; }
-button { touch-action: manipulation; }
-button:disabled { opacity: .6; cursor: not-allowed; }
-/* Visible focus is essential for people who navigate with a keyboard. */
-:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
-h1, h2, h3, p { margin-top: 0; }
-h1, h2, h3 { line-height: 1.1; }
-h1 { font-size: clamp(2.8rem, 5.3vw, 4.7rem); letter-spacing: -.055em; margin-bottom: 24px; }
-h2 { font-size: clamp(2rem, 3.1vw, 2.85rem); letter-spacing: -.045em; margin-bottom: 24px; }
-h3 { font-size: 1.25rem; letter-spacing: -.025em; line-height: 1.3; margin-bottom: 12px; }
-p { margin-bottom: 18px; }
-.container { width: min(1200px, calc(100% - 64px)); margin-inline: auto; }
-.blue-text { color: var(--blue); }
-.eyebrow { font-size: .78rem; font-weight: 750; letter-spacing: .1em; line-height: 1.5; margin-bottom: 20px; }
-.lead { color: var(--muted); font-size: 1.15rem; line-height: 1.75; max-width: 660px; }
-.measure { max-width: 660px; color: var(--muted); }
-/* Visually hidden text remains available to screen readers. */
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-.skip-link { position: absolute; top: -100px; left: 18px; background: white; padding: 12px; z-index: 100; }
-.skip-link:focus { top: 12px; }
 
+body {
+  background: #f1f5f9;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+.top-bar {
+  background: #0f172a;
+  color: white;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid #cbd5e1;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.site-logo {
+  height: 72px;
+  max-width: 260px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+nav {
+  display: flex;
+  gap: 6px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #64748b;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.nav-btn.active, .nav-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.container {
+  max-width: 850px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+.tab-page {
+  display: none;
+}
+
+.tab-page.active {
+  display: block;
+}
+
+.card {
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 22px;
+  margin-bottom: 16px;
+}
+
+.home-hero-card {
+  text-align: center;
+}
+
+.home-logo-box {
+  margin-bottom: 15px;
+}
+
+.home-main-logo {
+  width: 160px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn {
+  border: none;
+  border-radius: 4px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-small {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.btn-blue {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-green {
+  background: #16a34a;
+  color: white;
+}
+
+.btn-gray {
+  background: #64748b;
+  color: white;
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 10px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.goal-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.grid-2 {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.col-left {
+  flex: 2;
+  min-width: 280px;
+}
+
+.col-right {
+  flex: 1;
+  min-width: 220px;
+  text-align: center;
+  background: #f0fdf4;
+}
+
+.col-right h1 {
+  font-size: 36px;
+  color: #16a34a;
+  margin: 8px 0;
+}
+
+progress {
+  width: 100%;
+  height: 12px;
+}
+
+#milestone-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.milestone-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 8px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.milestone-item select {
+  width: auto;
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #cbd5e1;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #f8fafc;
+}
+
+.about-images {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.about-img-box {
+  flex: 1;
+  min-width: 250px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}
+
+.about-img-box img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.about-img-box p {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #475569;
+}
+
+.form-box {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 13px;
+  color: #64748b;
+  border-top: 1px solid #cbd5e1;
+  background: white;
+  margin-top: 30px;
+}

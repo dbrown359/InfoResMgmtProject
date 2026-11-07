@@ -11,158 +11,566 @@
 <body>
 
   <div class="top-bar">
-    <div>
-      <span>User: </span>
-      <strong id="user-display">Guest (Not Logged In)</strong>
+    <div>User: <strong id="user-display">Guest (Not Logged In)</strong></div>
+    <div class="top-bar-actions">
+      <button id="auth-btn" class="btn btn-green btn-small" onclick="handleAuth()">Login</button>
+      <button id="signup-top-btn" class="btn btn-purple btn-small" onclick="showTab('signup')">Sign Up</button>
     </div>
-    <button id="auth-btn" class="btn btn-green btn-small" onclick="handleAuth()">Login</button>
   </div>
 
   <header>
     <div class="brand-container" onclick="showTab('home')">
-      <img src="images/logo-cropped.png" alt="AccountaDay Logo" class="site-logo">
+      <img src="images/logo-cropped.png" alt="AccountaDay" class="site-logo">
     </div>
     <nav>
       <button class="nav-btn active" onclick="showTab('home')">Home</button>
       <button class="nav-btn" onclick="showTab('about')">About</button>
       <button class="nav-btn" onclick="showTab('planner')">My Goals</button>
-      <button class="nav-btn" onclick="showTab('instructor')">Coach Portal</button>
+      <button class="nav-btn" onclick="showTab('coach')">Coach Portal</button>
+      <button class="nav-btn" onclick="showTab('reviews')">Reviews</button>
+      <button class="nav-btn" onclick="showTab('billing')">Pricing &amp; Billing</button>
       <button class="nav-btn" onclick="showTab('contact')">Contact</button>
-      <button class="nav-btn" onclick="showTab('login')">Login</button>
+      <button class="nav-btn" onclick="showTab('account')">Account</button>
     </nav>
   </header>
 
   <div class="container">
 
     <div id="home-page" class="tab-page active">
-      <div class="card home-hero-card">
-        <div class="home-logo-box">
-          <img src="images/logo.png" alt="AccountaDay Logo" class="home-main-logo">
+      <div id="user-summary-card" class="card summary-banner" style="display: none;">
+        <div>
+          <h2>Welcome, <span id="summary-username">User</span></h2>
+          <p>You have <strong id="summary-active-count">5</strong> active goals. 
+            Milestone completion is <strong id="summary-rate">0%</strong>.</p>
         </div>
-        <h1>Achieve your personal goals with 1-on-1 coaching.</h1>
-        <p>Set a target like learning to drive in 60 days. Your coach creates your roadmap and tracks your progress.</p>
-        <button class="btn btn-blue" onclick="showTab('planner')">View My Goals</button>
-        <button class="btn btn-green" onclick="showTab('instructor')">Open Coach Portal</button>
+        <button class="btn btn-blue" onclick="showTab('planner')">Open Workspace</button>
       </div>
 
-      <div class="card">
-        <h3>How It Works</h3>
-        <p>1. You define a major goal and target deadline.</p>
-        <p>2. Your assigned instructor breaks it into short daily milestones.</p>
-        <p>3. You complete steps and update your progress.</p>
+      <div class="card home-hero-card">
+        <div class="home-hero-text">
+          <img src="images/logo.png" alt="AccountaDay" class="home-badge-logo">
+          <h1>Achieve your personal goals with <span class="text-blue">1-on-1 coaching</span>.</h1>
+          <p>Converting your ambitious goals to tangible results begins with developing good 
+            habits every single day. AccountaDay connects you directly to committed 
+            instructors who break down tough goals such as learning how to drive within 60 days, 
+            studying for professional certification, or increasing your stamina into 
+            easy-to-complete daily task lists. By providing you with a roadmap and frequent 
+            follow-ups from your instructor, you will be held accountable and motivated.</p>
+          <div class="hero-actions">
+            <button class="btn btn-blue" onclick="showTab('planner')">View My Goals</button>
+            <button class="btn btn-green" onclick="showTab('coach')">Coach Portal</button>
+            <button class="btn btn-purple" onclick="showTab('reviews')">Browse Coaches</button>
+          </div>
+        </div>
+        <div class="home-hero-img-box">
+          <img src="images/hero-coaching.jpg" alt="Coaching" onerror="this.src='images/Goals-1.png'">
+        </div>
+      </div>
+
+      <div class="card card-accent-blue">
+        <div class="feed-header">
+          <h3>Community Goal Feed</h3>
+          <p class="subtitle">Recent achievements shared by mentees and verified by coaches.</p>
+        </div>
+        <div id="community-feed" class="feed-container"></div>
       </div>
     </div>
 
     <div id="about-page" class="tab-page">
-      <div class="card">
+      <div class="card card-accent-purple">
         <h2>About AccountaDay</h2>
-        <p>AccountaDay is a personal accountability and mentorship platform designed to help anyone achieve real-life goals.</p>
-        <p>Instead of trying to accomplish big targets alone, users are paired with a dedicated instructor who breaks long-term plans into manageable, bite-sized daily milestones.</p>
-        <p>Whether your goal is learning how to drive in 60 days, building a fitness routine, or preparing for an exam, our structured roadmaps and real-time coach feedback keep you consistent and motivated.</p>
-        
-        <div class="about-images">
-          <div class="about-img-box">
-            <img src="images/Goals-1.png" alt="Goal Planning Roadmap">
-            <p>Target Roadmap & Timeline</p>
-          </div>
-          <div class="about-img-box">
-            <img src="images/Goals-2.webp" alt="Milestone Tracking">
-            <p>Milestone Execution & Monitoring</p>
-          </div>
+        <p class="about-lead">AccountaDay is a personal development and 
+          mentoring platform designed to solve the problem of procrastination 
+          through daily accountability. The failure of many challenging goals arises 
+          when people try to achieve them without having any timeline or professional advice. 
+          With the help of connecting the process of planning with that of implementation, 
+          AccountaDay makes it possible for everyone to get the necessary 
+          guidance from professionals.</p>
+
+      </div>
+
+      <div class="card show-row card-accent-blue">
+        <div class="show-img-box">
+          <img src="images/About1.jpg" alt="Target Roadmap" onerror="this.src='images/Goals-1.png'">
+        </div>
+        <div class="show-text-box">
+          <span class="step-badge badge-blue">1</span>
+          <h3>Target &amp; Timeline Setup</h3>
+          <p>Every successful journey begins with a well-defined finish line. 
+            You select up to five major personal, academic, or professional milestones 
+            and pair each with a firm timeline, such as a 60-day road driving sprint or 
+            a 45-day technical exam prep. Your coach assesses your schedule, 
+            helps identify potential obstacles, and establishes realistic deadlines
+             so you always know what you are working toward.</p>
+
         </div>
       </div>
+
+      <div class="card show-row reverse card-accent-green">
+        <div class="show-img-box">
+          <img src="images/About2.jpg" alt="Milestones" onerror="this.src='images/Goals-2.webp'">
+        </div>
+        <div class="show-text-box">
+          <span class="step-badge badge-green">2</span>
+          <h3>Daily Action Items</h3>
+          <p>Large projects often fail because they feel too broad and overwhelming 
+            to tackle in one sitting. AccountaDay solves this by breaking every 
+            roadmap down into simple, high-priority daily tasks. Instead of worrying
+             about an entire 60-day program, you only focus on checking off today's
+              assigned drills, like parallel parking practice or handbook reviews, 
+              building steady momentum that guarantees long-term success.</p>
+        </div>
+      </div>
+
+      <div class="card show-row card-accent-amber">
+        <div class="show-img-box">
+          <img src="images/About3.png" alt="Coach Feedback" onerror="this.src='images/hero-coaching.jpg'">
+        </div>
+        <div class="show-text-box">
+          <span class="step-badge badge-amber">3</span>
+          <h3>1-on-1 Coach Feedback</h3>
+          <p>Personal accountability is what turns good intentions 
+            into verified results. Your dedicated coach tracks every 
+            completed checklist item, prescribes new practice routines 
+            based on your progress, and communicates directly through the 
+            integrated chat stream. With continuous encouragement, expert tips,
+             and objective progress audits, you never have to navigate your learning 
+             journey by yourself.</p>
+
+        </div>
+
+      </div>
+
     </div>
 
     <div id="planner-page" class="tab-page">
-      <div class="card">
-        <h3>Main Target: <span id="goal-title-text">Learn Driving & Pass Road Test</span></h3>
-        <p>Timeline: <strong id="goal-days-text">60 Days</strong> | Instructor: <strong>Dr. David Brown</strong></p>
-        
-        <form onsubmit="saveMainGoal(event)" class="goal-form">
-          <input type="text" id="goal-input-title" placeholder="New goal title" required>
-          <input type="text" id="goal-input-days" placeholder="e.g. 60 Days" required>
-          <button type="submit" class="btn btn-blue">Update Goal</button>
-        </form>
+      <div class="card profile-header-card card-accent-green">
+        <div class="profile-meta">
+          <img src="images/user3.jpg" alt="Mentee" class="avatar-img" onerror="this.src='images/logo-cropped.png'">
+          <div>
+            <h2>Mentee Workspace</h2>
+            <p>Active Student: <strong id="mentee-name-display">Borhan Chowdhury</strong> | <span class="badge-tag tag-green">5 Active Goals</span></p>
+          </div>
+        </div>
       </div>
 
-      <div class="grid-2">
-        <div class="card col-left">
-          <h3>Coach-Assigned Milestones</h3>
-          <ul id="milestone-list"></ul>
-        </div>
+      <div class="student-tabs-nav">
+        <button class="student-subtab-btn active" onclick="switchMenteeSection('goals')">My Goals &amp; Roadmaps</button>
+        <button class="student-subtab-btn" onclick="switchMenteeSection('messages')">Coach 
+          Messages (<span id="mentee-msg-count">2</span>)</button>
 
-        <div class="card col-right">
-          <h3>Progress</h3>
-          <h1 id="progress-percent">0%</h1>
-          <progress id="progress-bar" value="0" max="100"></progress>
-          <p id="progress-text">0 of 0 completed</p>
-          <button class="btn btn-green full-width" onclick="downloadReport()">Download Report</button>
+      </div>
+
+      <div id="mentee-section-goals">
+        <div class="goal-tabs-bar" id="goal-tabs-container"></div>
+        <div id="active-goal-container"></div>
+      </div>
+
+      <div id="mentee-section-messages" style="display: none;">
+        <div class="card card-accent-purple">
+          <h3>Messages with Your Coach</h3>
+          <p class="subtitle">Chat directly with your assigned coach. 
+            Check incoming notes and send live replies.</p>
+          <div id="mentee-chat-stream" class="chat-stream-box"></div>
+          <form onsubmit="sendMenteeResponse(event)" class="reply-bar">
+            <input type="text" id="mentee-reply-input" placeholder="Type a message or question to your coach..." required>
+            <button type="submit" class="btn btn-purple">Send Reply</button>
+          </form>
         </div>
       </div>
     </div>
 
-    <div id="instructor-page" class="tab-page">
-      <div class="card">
-        <h2>Coach Management Dashboard</h2>
-        <p>Mentee: <strong>Borhan Chowdhury</strong></p>
-        <p>Current Target: <strong id="coach-goal-display">Learn Driving & Pass Road Test</strong></p>
+    <div id="coach-page" class="tab-page">
+      <div class="card profile-header-card card-accent-blue">
+        <div class="profile-meta">
+          <img src="images/avatar-coach.png" alt="Coach" class="avatar-img" onerror="this.src='images/logo-cropped.png'">
+          <div>
+            <h2>Coach Management Portal</h2>
+            <p>Logged in as: <strong id="coach-name-display">Dr. David Brown</strong> | <span class="badge-tag tag-blue">Certified Coach</span></p>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Assign a Short Milestone</h3>
-        <form onsubmit="coachAddMilestone(event)">
-          <input type="text" id="milestone-input" placeholder="e.g. Practice parallel parking" required>
-          <select id="milestone-priority">
-            <option value="High">High</option>
-            <option value="Medium" selected>Medium</option>
-            <option value="Low">Low</option>
-          </select>
-          <button type="submit" class="btn btn-blue">Assign</button>
+      <div class="coach-tabs-nav">
+        <button class="coach-subtab-btn active" onclick="switchCoachSection('goals')">Student 
+          Goals</button>
+        <button class="coach-subtab-btn" onclick="switchCoachSection('notifs')">Notifications (<span id="notif-count">2</span>)</button>
+        <button class="coach-subtab-btn" onclick="switchCoachSection('messages')">Text Messages (<span id="msg-count">2</span>)</button>
+      </div>
+
+      <div id="coach-section-goals">
+        <div class="card">
+          <h3>Assigned Student Goals</h3>
+          <div id="coach-assigned-goals" class="coach-goals-grid"></div>
+        </div>
+
+        <div class="card card-accent-amber">
+          <h3>Prescribe Short Milestone</h3>
+          <p>Selected: <strong id="coach-selected-goal-title">Select a goal above</strong></p>
+          <form onsubmit="coachAddMilestone(event)" class="coach-add-form">
+            <input type="text" id="coach-milestone-text" placeholder="e.g. Practice 3-point turns and parallel parking" required>
+            <select id="coach-milestone-priority">
+              <option value="High">Priority: High</option>
+              <option value="Medium" selected>Priority: Medium</option>
+              <option value="Low">Priority: Low</option>
+            </select>
+            <button type="submit" class="btn btn-blue">Assign Task</button>
+
+          </form>
+
+        </div>
+
+        <div class="card">
+          <h3>Milestone Checklist</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Task Description</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="coach-table-body"></tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <div id="coach-section-notifs" style="display: none;">
+        <div class="card card-accent-purple">
+          <h3>Recent Notifications</h3>
+          <p class="subtitle">System updates and mentee milestone completions.</p>
+          <div id="coach-notifs-list" class="feed-container"></div>
+        </div>
+      </div>
+
+      <div id="coach-section-messages" style="display: none;">
+        <div class="card card-accent-green">
+          <h3>Direct Messages &amp; Replies</h3>
+          <p class="subtitle">Chat with mentees in real time. Send responses directly below.</p>
+          <div id="coach-chat-stream" class="chat-stream-box"></div>
+          <form onsubmit="sendCoachResponse(event)" class="reply-bar">
+            <input type="text" id="coach-reply-input" placeholder="Type your response to the mentee..." required>
+            <button type="submit" class="btn btn-green">Send Response</button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="reviews-page" class="tab-page">
+      <div class="card card-accent-amber">
+        <h2>Certified Coaches</h2>
+        <div id="coaches-directory" class="grid-3" style="margin-top: 14px;"></div>
+      </div>
+
+      <div class="card form-box-wide card-accent-purple">
+        <h3>Submit a Coach Review</h3>
+        <form onsubmit="submitCoachReview(event)">
+          <div class="grid-2">
+            <div>
+              <label>Choose Coach:</label>
+              <select id="review-coach-select" required></select>
+            </div>
+            <div>
+              <label>Rating:</label>
+              <select id="review-stars-select" required>
+
+                <option value="5">5 Stars - Outstanding</option>
+                <option value="4">4 Stars - Very Good</option>
+                <option value="3">3 Stars - Good</option>
+                <option value="2">2 Stars - Fair</option>
+                <option value="1">1 Star - Poor</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <label>Feedback:</label>
+          <textarea id="review-comment-text" rows="3" placeholder="Write feedback here..." required></textarea>
+          <button type="submit" class="btn btn-green">Submit Review</button>
+
         </form>
+
       </div>
 
       <div class="card">
-        <h3>Milestone Checklist</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Priority</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="coach-table-body"></tbody>
-        </table>
+        <h3>Recent Feedback</h3>
+        <div id="reviews-list-container" class="reviews-feed"></div>
       </div>
+    </div>
+
+    <div id="billing-page" class="tab-page">
+      <div class="card card-accent-blue">
+        <h2>Coaching Plans &amp; Billing</h2>
+        <div class="grid-3" style="margin-top: 14px;">
+          <div class="package-card featured">
+            <span class="badge-featured">Recommended</span>
+            <h3>3-Month Plan</h3>
+            <div class="price-tag">$50 <span>/ 3 months</span></div>
+            <p class="subtitle">Complete habit 
+              and skill mastery.</p>
+            <button class="btn btn-blue full-width" onclick="selectPlan('3-Month Plan ($50.00)', 50)">
+              Select Plan</button>
+          </div>
+
+          <div class="package-card card-accent-purple">
+            <h3>2-Month Sprint</h3>
+            <div class="price-tag">$100 <span>/ 2 months</span></div>
+            <p class="subtitle">Intensive milestone 
+              sprint schedule.</p>
+            <button class="btn btn-purple full-width" onclick="selectPlan('2-Month Sprint ($100.00)', 100)">
+              Select Plan</button>
+          </div>
+
+          <div class="package-card card-accent-amber">
+            <h3>Custom / Express</h3>
+            <div class="price-tag">Custom Quote</div>
+            <div class="custom-notice">Notice: Goals under 2 months 
+              require coach review and custom quote based on hours.</div>
+            <button class="btn btn-gray full-width" onclick="showTab('contact')">Request 
+              Quote</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card card-accent-green">
+        <h3>Account Billing Status</h3>
+        <div class="billing-summary-grid">
+          <div class="bill-stat stat-blue"><span>Current Balance:</span><strong id="billing-balance">$0.00 (No Dues)</strong></div>
+          <div class="bill-stat stat-purple"><span>Payment Deadline:</span><strong>December 15, 2026</strong></div>
+          <div class="bill-stat stat-green"><span>Active Plan:</span><strong id="billing-active-plan">3-Month Plan ($50.00)</strong></div>
+        </div>
+
+        <div class="payment-box">
+          <h4>Make a Payment</h4>
+          <form onsubmit="handlePayment(event)">
+            <div class="grid-2">
+              <div>
+                <label>Payment Method:</label>
+                <select id="payment-method-select" onchange="togglePaymentInputs(this.value)">
+                  <option value="card">Credit or 
+                    Debit Card</option>
+                  <option value="bank">Bank 
+                    Account (ACH)</option>
+                </select>
+              </div>
+              <div>
+                <label>Amount:</label>
+                <input type="text" id="payment-amount" value="$50.00" required>
+              </div>
+            </div>
+
+            <div id="card-fields">
+              <div class="grid-2">
+                <div><label>Cardholder Name:</label><input type="text" id="card-name" placeholder="Name on card"></div>
+                <div><label>Card Number:</label><input type="text" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX"></div>
+              </div>
+            </div>
+
+            <div id="bank-fields" style="display: none;">
+              <div class="grid-2">
+                <div><label>Routing Number:</label><input type="text" id="bank-routing" placeholder="9-digit routing"></div>
+                <div><label>Account Number:</label><input type="text" id="bank-account" placeholder="Checking account"></div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-green">Submit Payment</button>
+            <p id="payment-status-msg" class="success-text"></p>
+
+          </form>
+
+        </div>
+
+      </div>
+
     </div>
 
     <div id="contact-page" class="tab-page">
-      <div class="card form-box">
-        <h2>Contact Coaching Team</h2>
+      <div class="card form-box card-accent-blue">
+        <h2>Direct Contact &amp; Support</h2>
         <form onsubmit="handleContact(event)">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea rows="3" placeholder="Your Message" required></textarea>
-          <button type="submit" class="btn btn-blue">Send</button>
-          <p id="contact-msg"></p>
+          <label>Recipient:</label>
+          <input type="text" id="contact-recipient" value="Dr. David Brown" required>
+          <label>Your Name:</label>
+          <input type="text" id="contact-name" placeholder="Your full name" required>
+          <label>Email or Phone:</label>
+          <input type="text" id="contact-email" placeholder="Your email or phone" required>
+          <label>Message:</label>
+          <textarea id="contact-message" rows="4" placeholder="Enter message..." required></textarea>
+          <button type="submit" class="btn btn-blue full-width">Send Message</button>
+          <p id="contact-msg" class="success-text"></p>
         </form>
       </div>
     </div>
 
-    <div id="login-page" class="tab-page">
-      <div class="card form-box">
-        <h2>Account Login</h2>
-        <form onsubmit="doLogin(event)">
-          <input type="text" id="user-input" placeholder="Enter Name" required>
-          <input type="password" id="pass-input" placeholder="Enter Password" required>
-          <select id="role-input">
-            <option value="Mentee">User / Mentee</option>
-            <option value="Instructor">Instructor / Coach</option>
-          </select>
-          <button type="submit" class="btn btn-blue full-width">Sign In</button>
-        </form>
+    <div id="account-page" class="tab-page">
+      <div class="card card-accent-purple">
+        <h2>Account Profile &amp; Settings</h2>
+        <p class="subtitle">Edit your personal account details, 
+          change your role, or update your contact information.</p>
+        
+        <div class="account-profile-grid">
+          <div class="account-badge-card">
+            <img id="account-avatar-img" src="images/user3.jpg" class
+            ="avatar-large" alt="Account Avatar" onerror="this.src='images/logo-cropped.png'">
+            <h3 id="account-name-field">Borhan Chowdhury</h3>
+            <span id="account-role-tag" class="badge-tag tag-blue">Mentee</span>
+            <p style="font-size: 13px; color: #64748b; margin-top: 10px;">Active &amp; Verified Member</p>
+          </div>
+
+          <div class="account-details-card">
+            <form onsubmit="saveAccountProfile(event)">
+              <div class="account-edit-field">
+                <label>Full Name:</label>
+                <input type="text" id="edit-account-name" value="Borhan Chowdhury" required>
+              </div>
+              <div class="account-edit-field">
+                <label>Email Address:</label>
+                <input type="email" id="edit-account-email" value="bchowdhury@student.pvamu.edu" required>
+              </div>
+              <div class="account-edit-field">
+                <label>Role / Permissions:</label>
+                <select id="edit-account-role">
+                  <option value="Mentee">User / Mentee</option>
+                  <option value="Coach">Coach</option>
+                </select>
+              </div>
+              <div class="account-edit-field">
+                <label>Membership Plan:</label>
+                <select id="edit-account-plan">
+                  <option value="3-Month Plan ($50.00)">3-Month Plan 
+                    ($50.00 - Recommended)</option>
+                  <option value="2-Month Sprint ($100.00)">2-Month Sprint ($100.00)</option>
+                  <option value="Custom Quote Plan">Custom Quote Plan</option>
+
+                </select>
+
+              </div>
+
+              <div class="account-edit-field">
+                <label>Phone / Contact:</label>
+                <input type="text" id="edit-account-phone" value="+1 (832) 555-0192">
+              </div>
+              <button type="submit" class="btn btn-green">Save Profile Changes</button>
+              <p id="account-save-msg" class="success-text"></p>
+
+            </form>
+
+          </div>
+
+        </div>
+
       </div>
+
+    </div>
+
+    <div id="login-page" class="tab-page">
+      <div class="login-split-card">
+        <div class="login-left-brand">
+          <img src="images/logo.png" alt="AccountaDay" class="login-hero-logo">
+          <h1>Track Daily.<br><span class="text-blue">Achieve Big.</span></h1>
+          <p>Personal 1-on-1 mentorship to guide you 
+            through custom roadmaps and verified daily milestones.</p>
+
+          <ul class="login-feature-list">
+            <li>Direct 1-on-1 coach matching</li>
+            <li>Custom daily milestone roadmaps</li>
+            <li>Real-time messaging and verified progress</li>
+
+          </ul>
+
+        </div>
+
+        <div class="login-vertical-divider"></div>
+
+        <div class="login-right-form">
+          <h2>Account Login</h2>
+          <p class="subtitle">Sign in to open your personal dashboard.</p>
+
+          <form onsubmit="doLogin(event)">
+            <label>Name or Username:</label>
+            <input type="text" id="user-input" placeholder="e.g. Borhan or David" required>
+            
+            <label>Password:</label>
+            <input type="password" id="pass-input" placeholder="Enter password" required>
+            
+            <label>Select Role:</label>
+            <select id="role-input">
+              <option value="Mentee">User / Mentee</option>
+              <option value="Coach">Coach</option>
+            </select>
+            
+            <button type="submit" class="btn btn-blue full-width btn-large">Sign In</button>
+          </form>
+
+          <div class="auth-footer-prompt">
+            Don't have an account? <a href="#" onclick="showTab('signup')">Sign Up Here</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="signup-page" class="tab-page">
+      <div class="login-split-card signup-card-accent">
+        <div class="login-left-brand">
+          <img src="images/logo.png" alt="AccountaDay" class="login-hero-logo">
+          <h1>Join Our Community.<br><span class="text-purple">Start Today.</span></h1>
+          <p>Create your account in seconds and match with 
+            expert coaches ready to guide you.</p>
+
+          <ul class="login-feature-list">
+            <li>Dedicated coach check-ins</li>
+            <li>Structured step-by-step goal plans</li>
+            <li>Instant feedback and official progress reports</li>
+
+          </ul>
+
+        </div>
+
+        <div class="login-vertical-divider"></div>
+
+        <div class="login-right-form">
+          <h2>Create New Account</h2>
+          <p class="subtitle">Enter your basic information to get started.</p>
+          <form onsubmit="doSignup(event)">
+            <label>Full Name:</label>
+            <input type="text" id="signup-name" placeholder="e.g. Borhan Chowdhury" required>
+            
+            <label>Email Address:</label>
+            <input type="email" id="signup-email" placeholder="e.g. bchowdhury@student.pvamu.edu" required>
+            
+            <label>Password:</label>
+            <input type="password" id="signup-pass" placeholder="Create a password" required>
+            
+            <button type="submit" class="btn btn-purple full-width btn-large">Create Account</button>
+          </form>
+
+          <div class="auth-footer-prompt">
+            Already have an account? <a href="#" onclick="showTab('login')">Log In Here</a>
+
+          </div>
+
+        </div>
+
+      </div>
+      
     </div>
 
   </div>

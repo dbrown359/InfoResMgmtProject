@@ -4,10 +4,14 @@ let currentEmail = "bchowdhury@student.pvamu.edu";
 let currentPlan = "3-Month Plan ($50.00)";
 let currentPhone = "+1 (832) 555-0192";
 
+
 let coaches = [
-  { id: 1, name: "Dr. David Brown", specialty: "Driver Road Test Prep", rating: 4.9, email: "dbrown@accountaday.com", avatar: "images/avatar-coach.png" },
-  { id: 2, name: "Sarah Jenkins", specialty: "Python & Cloud Exams", rating: 4.8, email: "sjenkins@accountaday.com", avatar: "images/avatar-coach-2.png" },
-  { id: 3, name: "Marcus Vance", specialty: "5K Running & Stamina", rating: 5.0, email: "mvance@accountaday.com", avatar: "images/avatar-coach-3.png" }
+  { id: 1, name: "Dr. David Brown", specialty: "Driver Road Test Prep", 
+    rating: 4.9, email: "dbrown@accountaday.com", avatar: "images/avatar-coach.png" },
+  { id: 2, name: "Sarah Jenkins", specialty: "Python & Cloud Exams", 
+    rating: 4.8, email: "sjenkins@accountaday.com", avatar: "images/avatar-coach-2.png" },
+  { id: 3, name: "Marcus Vance", specialty: "5K Running & Stamina", 
+    rating: 5.0, email: "mvance@accountaday.com", avatar: "images/avatar-coach-3.png" }
 ];
 
 let goals = [
@@ -71,6 +75,7 @@ let goals = [
 
 let selectedGoalIndex = 0;
 let selectedCoachGoalId = 1;
+
 
 let feedPosts = [
   { 
@@ -138,12 +143,16 @@ let coachNotifications = [
 ];
 
 let coachMessages = [
-  { from: "Borhan Chowdhury", to: "Dr. David Brown", text: "Finished highway merging drill yesterday. Ready for next checklist.", time: "Today at 9:15 AM", senderRole: "mentee" },
-  { from: "Dr. David Brown", to: "Borhan Chowdhury", text: "Excellent job Borhan. I have added parallel parking drills to your checklist.", time: "Today at 9:30 AM", senderRole: "coach" }
+  { from: "Borhan Chowdhury", to: "Dr. David Brown", 
+    text: "Finished highway merging drill yesterday. Ready for next checklist.", time: "Today at 9:15 AM", senderRole: "mentee" },
+  { from: "Dr. David Brown", to: "Borhan Chowdhury", 
+    text: "Excellent job Borhan. I have added parallel parking drills to your checklist.", time: "Today at 9:30 AM", senderRole: "coach" }
 ];
 
+
 function showTab(tabName) {
-  if (currentUser === "" && (tabName === "planner" || tabName === "coach" || tabName === "account")) {
+  if (currentUser === "" && (tabName === "planner" 
+    || tabName === "coach" || tabName === "account")) {
     alert("Please log in to access this portal.");
     showTab("login");
     return;
@@ -154,7 +163,9 @@ function showTab(tabName) {
   }
 
   let pages = document.getElementsByClassName("tab-page");
-  for (let i = 0; i < pages.length; i++) pages[i].classList.remove("active");
+  for (let i = 0; i < pages.length; i++) {
+    pages[i].classList.remove("active");
+  }
 
   let buttons = document.getElementsByClassName("nav-btn");
   for (let i = 0; i < buttons.length; i++) buttons[i].classList.remove("active");
@@ -175,48 +186,49 @@ function showTab(tabName) {
   if (tabName === "account") renderAccount();
 }
 
+
 function doLogin(e) {
-  e.preventDefault();
-  let val = document.getElementById("user-input").value.trim().toLowerCase();
-  let rInput = document.getElementById("role-input").value;
+   e.preventDefault();
+   let val = document.getElementById("user-input").value.trim().toLowerCase();
+   let rInput = document.getElementById("role-input").value;
 
-  if (val.includes("borhan")) {
-    currentUser = "Borhan Chowdhury";
-    currentRole = "Mentee";
-    currentEmail = "bchowdhury@student.pvamu.edu";
-  } else if (val.includes("david") || val.includes("brown")) {
-    currentUser = "Dr. David Brown";
-    currentRole = "Coach";
-    currentEmail = "dbrown@accountaday.com";
-  } else if (val.includes("sarah")) {
-    currentUser = "Sarah Jenkins";
-    currentRole = "Coach";
-    currentEmail = "sjenkins@accountaday.com";
-  } else if (val.includes("marcus")) {
-    currentUser = "Marcus Vance";
-    currentRole = "Coach";
-    currentEmail = "mvance@accountaday.com";
-  } else {
-    currentUser = document.getElementById("user-input").value.trim();
-    currentRole = rInput;
-    currentEmail = "user@accountaday.com";
-  }
+   if (val.includes("borhan")) {
+     currentUser = "Borhan Chowdhury";
+     currentRole = "Mentee";
+     currentEmail = "bchowdhury@student.pvamu.edu";
+   } else if (val.includes("david") || val.includes("brown")) {
+     currentUser = "Dr. David Brown";
+     currentRole = "Coach";
+     currentEmail = "dbrown@accountaday.com";
+   } else if (val.includes("sarah")) {
+     currentUser = "Sarah Jenkins";
+     currentRole = "Coach";
+     currentEmail = "sjenkins@accountaday.com";
+   } else if (val.includes("marcus")) {
+     currentUser = "Marcus Vance";
+     currentRole = "Coach";
+     currentEmail = "mvance@accountaday.com";
+   } else {
+     currentUser = document.getElementById("user-input").value.trim();
+     currentRole = rInput;
+     currentEmail = "user@accountaday.com";
+   }
 
-  document.getElementById("user-display").textContent = currentUser + " (" + currentRole + ")";
-  document.getElementById("auth-btn").textContent = "Logout";
-  document.getElementById("user-summary-card").style.display = "flex";
-  document.getElementById("summary-username").textContent = currentUser;
+   document.getElementById("user-display").textContent = currentUser + " (" + currentRole + ")";
+   document.getElementById("auth-btn").textContent = "Logout";
+   document.getElementById("user-summary-card").style.display = "flex";
+   document.getElementById("summary-username").textContent = currentUser;
 
-  document.getElementById("user-input").value = "";
-  document.getElementById("pass-input").value = "";
+   document.getElementById("user-input").value = "";
+   document.getElementById("pass-input").value = "";
 
-  if (currentRole === "Coach") {
-    document.getElementById("coach-name-display").textContent = currentUser;
-    showTab("coach");
-  } else {
-    document.getElementById("mentee-name-display").textContent = currentUser;
-    showTab("planner");
-  }
+   if (currentRole === "Coach") {
+     document.getElementById("coach-name-display").textContent = currentUser;
+     showTab("coach");
+   } else {
+     document.getElementById("mentee-name-display").textContent = currentUser;
+     showTab("planner");
+   }
 }
 
 function doSignup(e) {
@@ -255,6 +267,7 @@ function handleAuth() {
   }
 }
 
+
 function renderHomeFeed() {
   let box = document.getElementById("community-feed");
   box.innerHTML = "";
@@ -263,7 +276,8 @@ function renderHomeFeed() {
     box.innerHTML += 
       "<div class='feed-post'>" +
         "<div class='feed-user-meta'>" +
-          "<div style='display:flex;align-items:center;'><img src='" + p.avatar + "' class='feed-avatar' alt='Avatar' onerror=\"this.src='images/logo-cropped.png'\"><strong>" + p.user + "</strong></div>" +
+          "<div style='display:flex;align-items:center;'><img src='" 
+          + p.avatar + "' class='feed-avatar' alt='Avatar' onerror=\"this.src='images/logo-cropped.png'\"><strong>" + p.user + "</strong></div>" +
           "<span style='font-size:13px;color:#94a3b8;'>" + p.time + "</span>" +
         "</div>" +
         "<div class='feed-badge'>Target: " + p.goalTitle + " | Coach: " + p.coach + "</div>" +
@@ -279,13 +293,15 @@ function renderHomeFeed() {
       if (goals[g].milestones[m].status === "Completed") done++;
     }
   }
-  document.getElementById("summary-rate").textContent = (total === 0 ? 0 : Math.round((done / total) * 100)) + "%";
+  document.getElementById("summary-rate").textContent = 
+    (total === 0 ? 0 : Math.round((done / total) * 100)) + "%";
 }
 
 function likePost(i) {
   feedPosts[i].likes++;
   renderHomeFeed();
 }
+
 
 function switchMenteeSection(sec) {
   let btns = document.getElementsByClassName("student-subtab-btn");
@@ -305,68 +321,71 @@ function switchMenteeSection(sec) {
 }
 
 function renderMenteeGoals() {
-  let tabsBar = document.getElementById("goal-tabs-container");
-  tabsBar.innerHTML = "";
-  for (let i = 0; i < goals.length; i++) {
-    let btn = document.createElement("button");
-    btn.className = "goal-tab-btn" + (i === selectedGoalIndex ? " active" : "");
-    btn.textContent = (i + 1) + ". " + goals[i].title;
-    btn.onclick = function() { selectedGoalIndex = i; renderMenteeGoals(); };
-    tabsBar.appendChild(btn);
-  }
+   let tabsBar = document.getElementById("goal-tabs-container");
+   tabsBar.innerHTML = "";
+   for (let i = 0; i < goals.length; i++) {
+     let btn = document.createElement("button");
+     btn.className = "goal-tab-btn" + (i === selectedGoalIndex ? " active" : "");
+     btn.textContent = (i + 1) + ". " + goals[i].title;
+     btn.onclick = function() { 
+       selectedGoalIndex = i; 
+       renderMenteeGoals(); 
+     };
+     tabsBar.appendChild(btn);
+   }
 
-  let g = goals[selectedGoalIndex];
-  let coachObj = getCoachByName(g.coach);
-  let done = 0;
-  for (let m = 0; m < g.milestones.length; m++) {
-    if (g.milestones[m].status === "Completed") done++;
-  }
-  let pct = g.milestones.length === 0 ? 0 : Math.round((done / g.milestones.length) * 100);
+   let g = goals[selectedGoalIndex];
+   let coachObj = getCoachByName(g.coach);
+   let done = 0;
+   for (let m = 0; m < g.milestones.length; m++) {
+     if (g.milestones[m].status === "Completed") done++;
+   }
+   let pct = g.milestones.length === 0 ? 0 : Math.round((done / g.milestones.length) * 100);
 
-  let opts = "";
-  for (let c = 0; c < coaches.length; c++) {
-    let sel = coaches[c].name === g.coach ? "selected" : "";
-    opts += "<option value='" + coaches[c].name + "' " + sel + ">" + coaches[c].name + "</option>";
-  }
+   let opts = "";
+   for (let c = 0; c < coaches.length; c++) {
+     let sel = coaches[c].name === g.coach ? "selected" : "";
+     opts += "<option value='" + coaches[c].name + "' " + sel + ">" + coaches[c].name + "</option>";
+   }
 
-  document.getElementById("active-goal-container").innerHTML = 
-    "<div class='card card-accent-blue'>" +
-      "<h3>" + g.title + "</h3>" +
-      "<p style='font-size: 15px;'>Timeline: <strong>" + g.duration + "</strong></p>" +
-      "<div class='coach-badge-row'>" +
-        "<div>Assigned Coach: <strong>" + g.coach + "</strong> (" + coachObj.rating + " Stars)</div>" +
-        "<div class='coach-select-box'>" +
-          "<button class='btn btn-purple btn-small' onclick='switchMenteeSection(\"messages\")'>Message Coach</button>" +
-          "<select id='coach-selector-input'>" + opts + "</select>" +
-          "<button class='btn btn-blue btn-small' onclick='setGoalCoach(" + g.id + ")'>Set Coach</button>" +
-        "</div>" +
-      "</div>" +
-    "</div>" +
-    "<div class='grid-2'>" +
-      "<div class='card col-left card-accent-purple'><h3>Daily Milestones</h3><ul id='milestone-list'></ul></div>" +
-      "<div class='card col-right'>" +
-        "<h3>Goal Progress</h3><h1>" + pct + "%</h1>" +
-        "<progress value='" + pct + "' max='100'></progress>" +
-        "<p style='margin:10px 0; font-size: 16px;'><strong>" + done + "</strong> of <strong>" + g.milestones.length + "</strong> completed</p>" +
-        "<button class='btn btn-green full-width' onclick='downloadReport()'>Download PDF Report</button>" +
-      "</div>" +
-    "</div>";
+   document.getElementById("active-goal-container").innerHTML = 
+     "<div class='card card-accent-blue'>" +
+       "<h3>" + g.title + "</h3>" +
+       "<p style='font-size: 15px;'>Timeline: <strong>" + g.duration + "</strong></p>" +
+       "<div class='coach-badge-row'>" +
+         "<div>Assigned Coach: <strong>" + g.coach + "</strong> (" + coachObj.rating + " Stars)</div>" +
+         "<div class='coach-select-box'>" +
+           "<button class='btn btn-purple btn-small' onclick='switchMenteeSection(\"messages\")'>Message Coach</button>" +
+           "<select id='coach-selector-input'>" + opts + "</select>" +
+           "<button class='btn btn-blue btn-small' onclick='setGoalCoach(" + g.id + ")'>Set Coach</button>" +
+         "</div>" +
+       "</div>" +
+     "</div>" +
+     "<div class='grid-2'>" +
+       "<div class='card col-left card-accent-purple'><h3>Daily Milestones</h3><ul id='milestone-list'></ul></div>" +
+       "<div class='card col-right'>" +
+         "<h3>Goal Progress</h3><h1>" + pct + "%</h1>" +
+         "<progress value='" + pct + "' max='100'></progress>" +
+         "<p style='margin:10px 0; font-size: 16px;'><strong>" + done + "</strong> of <strong>" + g.milestones.length + "</strong> completed</p>" +
+         "<button class='btn btn-green full-width' onclick='downloadReport()'>Download PDF Report</button>" +
+       "</div>" +
+     "</div>";
 
-  let list = document.getElementById("milestone-list");
-  for (let i = 0; i < g.milestones.length; i++) {
-    let m = g.milestones[i];
-    let li = document.createElement("li");
-    li.className = "milestone-item";
-    li.innerHTML = 
-      "<div><strong>" + m.text + "</strong> (" + m.priority + ")</div>" +
-      "<select onchange='updateGoalMilestoneStatus(" + selectedGoalIndex + ", " + i + ", this.value)'>" +
-        "<option " + (m.status === "Planned" ? "selected" : "") + ">Planned</option>" +
-        "<option " + (m.status === "Completed" ? "selected" : "") + ">Completed</option>" +
-      "</select>";
-    list.appendChild(li);
-  }
+   let list = document.getElementById("milestone-list");
+   for (let i = 0; i < g.milestones.length; i++) {
+     let m = g.milestones[i];
+     let li = document.createElement("li");
+     li.className = "milestone-item";
+     li.innerHTML = 
+       "<div><strong>" + m.text + "</strong> (" + m.priority + ")</div>" +
+       "<select onchange='updateGoalMilestoneStatus(" + selectedGoalIndex + ", " + i + ", this.value)'>" +
+         "<option " + (m.status === "Planned" ? "selected" : "") + ">Planned</option>" +
+         "<option " + (m.status === "Completed" ? "selected" : "") + ">Completed</option>" +
+       "</select>";
+     list.appendChild(li);
+   }
 
-  document.getElementById("mentee-msg-count").textContent = coachMessages.length;
+   document.getElementById("mentee-msg-count").textContent = coachMessages.length;
 }
 
 function updateGoalMilestoneStatus(gIdx, mIdx, val) {
@@ -438,6 +457,7 @@ function sendMenteeResponse(e) {
   document.getElementById("msg-count").textContent = coachMessages.length;
 }
 
+
 function switchCoachSection(sec) {
   let btns = document.getElementsByClassName("coach-subtab-btn");
   for (let i = 0; i < btns.length; i++) btns[i].classList.remove("active");
@@ -477,7 +497,10 @@ function renderCoachPortal() {
     let chip = document.createElement("div");
     chip.className = "coach-goal-chip" + (g.id === selectedCoachGoalId ? " active" : "");
     chip.innerHTML = "<h4>" + g.title + "</h4><p style='font-size:14px;color:#64748b;'>Mentee: " + g.mentee + "</p>";
-    chip.onclick = function() { selectedCoachGoalId = g.id; renderCoachPortal(); };
+    chip.onclick = function() { 
+      selectedCoachGoalId = g.id; 
+      renderCoachPortal(); 
+    };
     cGrid.appendChild(chip);
   }
 
@@ -487,7 +510,8 @@ function renderCoachPortal() {
   }
 
   if (activeGoal) {
-    document.getElementById("coach-selected-goal-title").textContent = activeGoal.title + " (" + activeGoal.mentee + ")";
+    document.getElementById("coach-selected-goal-title").textContent = 
+      activeGoal.title + " (" + activeGoal.mentee + ")";
     let tbody = document.getElementById("coach-table-body");
     tbody.innerHTML = "";
     for (let i = 0; i < activeGoal.milestones.length; i++) {
@@ -591,43 +615,44 @@ function coachDelete(goalId, idx) {
   renderCoachPortal();
 }
 
+
 function renderReviews() {
-  let dir = document.getElementById("coaches-directory");
-  dir.innerHTML = "";
-  for (let i = 0; i < coaches.length; i++) {
-    let c = coaches[i];
-    dir.innerHTML += 
-      "<div class='coach-card card-accent-blue'>" +
-        "<img src='" + c.avatar + "' class='coach-card-avatar' alt='" + c.name + "' onerror=\"this.src='images/logo-cropped.png'\">" +
-        "<h3>" + c.name + "</h3>" +
-        "<p class='subtitle'>" + c.specialty + "</p>" +
-        "<p class='coach-rating-text'>" + c.rating + " / 5 Stars</p>" +
-        "<button class='btn btn-blue full-width' onclick='contactCoach(\"" + c.name + "\")'>Message Coach</button>" +
-      "</div>";
-  }
+   let dir = document.getElementById("coaches-directory");
+   dir.innerHTML = "";
+   for (let i = 0; i < coaches.length; i++) {
+     let c = coaches[i];
+     dir.innerHTML += 
+       "<div class='coach-card card-accent-blue'>" +
+         "<img src='" + c.avatar + "' class='coach-card-avatar' alt='" + c.name + "' onerror=\"this.src='images/logo-cropped.png'\">" +
+         "<h3>" + c.name + "</h3>" +
+         "<p class='subtitle'>" + c.specialty + "</p>" +
+         "<p class='coach-rating-text'>" + c.rating + " / 5 Stars</p>" +
+         "<button class='btn btn-blue full-width' onclick='contactCoach(\"" + c.name + "\")'>Message Coach</button>" +
+       "</div>";
+   }
 
-  let sel = document.getElementById("review-coach-select");
-  sel.innerHTML = "";
-  for (let i = 0; i < coaches.length; i++) {
-    let opt = document.createElement("option");
-    opt.value = coaches[i].name;
-    opt.textContent = coaches[i].name;
-    sel.appendChild(opt);
-  }
+   let sel = document.getElementById("review-coach-select");
+   sel.innerHTML = "";
+   for (let i = 0; i < coaches.length; i++) {
+     let opt = document.createElement("option");
+     opt.value = coaches[i].name;
+     opt.textContent = coaches[i].name;
+     sel.appendChild(opt);
+   }
 
-  let rList = document.getElementById("reviews-list-container");
-  rList.innerHTML = "";
-  for (let i = 0; i < reviews.length; i++) {
-    let r = reviews[i];
-    rList.innerHTML += 
-      "<div class='review-item'>" +
-        "<div class='review-top'>" +
-          "<div style='display:flex;align-items:center;'><img src='" + r.avatar + "' class='feed-avatar' alt='Review Avatar' onerror=\"this.src='images/logo-cropped.png'\"><strong class='review-author-title'>" + r.mentee + " on " + r.coach + "</strong></div>" +
-          "<span class='review-stars-badge'>" + r.rating + " Stars</span>" +
-        "</div>" +
-        "<p class='review-body-text'>" + r.comment + "</p>" +
-      "</div>";
-  }
+   let rList = document.getElementById("reviews-list-container");
+   rList.innerHTML = "";
+   for (let i = 0; i < reviews.length; i++) {
+     let r = reviews[i];
+     rList.innerHTML += 
+       "<div class='review-item'>" +
+         "<div class='review-top'>" +
+           "<div style='display:flex;align-items:center;'><img src='" + r.avatar + "' class='feed-avatar' alt='Review Avatar' onerror=\"this.src='images/logo-cropped.png'\"><strong class='review-author-title'>" + r.mentee + " on " + r.coach + "</strong></div>" +
+           "<span class='review-stars-badge'>" + r.rating + " Stars</span>" +
+         "</div>" +
+         "<p class='review-body-text'>" + r.comment + "</p>" +
+       "</div>";
+   }
 }
 
 function submitCoachReview(e) {
@@ -636,9 +661,17 @@ function submitCoachReview(e) {
   let rating = parseInt(document.getElementById("review-stars-select").value);
   let comment = document.getElementById("review-comment-text").value;
 
-  let userAvatar = currentUser.toLowerCase().includes("borhan") ? "images/user3.jpg" : "images/logo-cropped.png";
+  let userAvatar = currentUser.toLowerCase().includes("borhan") 
+    ? "images/user3.jpg" : "images/logo-cropped.png";
 
-  reviews.unshift({ id: reviews.length + 1, coach: cName, mentee: currentUser || "Borhan Chowdhury", avatar: userAvatar, rating: rating, comment: comment });
+  reviews.unshift({ 
+    id: reviews.length + 1, 
+    coach: cName, 
+    mentee: currentUser || "Borhan Chowdhury", 
+    avatar: userAvatar, 
+    rating: rating, 
+    comment: comment 
+  });
   document.getElementById("review-comment-text").value = "";
   alert("Thank you. Your review for " + cName + " has been posted.");
   renderReviews();
@@ -675,6 +708,7 @@ function handleContact(e) {
   document.getElementById("contact-msg").textContent = "Message sent successfully to " + rec + ".";
   e.target.reset();
 }
+
 
 function renderAccount() {
   document.getElementById("account-name-field").textContent = currentUser || "Borhan Chowdhury";
@@ -722,6 +756,7 @@ function saveAccountProfile(e) {
   }, 3500);
 }
 
+
 function getCoachByName(name) {
   for (let i = 0; i < coaches.length; i++) {
     if (coaches[i].name.toLowerCase() === name.toLowerCase()) return coaches[i];
@@ -751,7 +786,8 @@ function handlePayment(e) {
   e.preventDefault();
   let amt = document.getElementById("payment-amount").value;
   document.getElementById("billing-balance").textContent = "$0.00 (No Dues)";
-  document.getElementById("payment-status-msg").textContent = "Payment of " + amt + " processed successfully. Receipt sent to your email.";
+  document.getElementById("payment-status-msg").textContent = 
+    "Payment of " + amt + " processed successfully. Receipt sent to your email.";
 }
 
 function downloadReport() {
@@ -781,6 +817,36 @@ function downloadReport() {
 
   w.print();
 }
+
+function addMenteeGoal(e) {
+  e.preventDefault();
+  let title = document.getElementById("new-goal-title").value.trim();
+  let duration = document.getElementById("new-goal-duration").value.trim();
+  let coach = document.getElementById("new-goal-coach").value;
+
+  goals.push({
+    id: goals.length + 1,
+    mentee: currentUser || "Borhan Chowdhury",
+    coach: coach,
+    title: title,
+    duration: duration,
+    milestones: [
+      { text: "Initial Roadmap Setup & First Check-In", priority: "High", status: "Planned" }
+    ]
+  });
+
+  selectedGoalIndex = goals.length - 1;
+  document.getElementById("new-goal-title").value = "";
+  document.getElementById("new-goal-duration").value = "";
+
+  let activeBadge = document.querySelector("#planner-page .tag-green");
+  if (activeBadge) activeBadge.textContent = goals.length + " Active Goals";
+  document.getElementById("summary-active-count").textContent = goals.length;
+
+  renderMenteeGoals();
+  alert("New goal added successfully.");
+}
+
 
 renderHomeFeed();
 renderMenteeGoals();

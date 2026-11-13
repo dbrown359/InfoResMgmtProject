@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AccountaDay</title>
+  <title>Account-A-Day</title>
   <link rel="icon" type="image/png" href="images/logo-cropped.png">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
@@ -20,7 +20,7 @@
 
   <header>
     <div class="brand-container" onclick="showTab('home')">
-      <img src="images/logo-cropped.png" alt="AccountaDay" class="site-logo">
+      <img src="images/logo-cropped.png" alt="Account-A-Day" class="site-logo">
     </div>
     <nav>
       <button class="nav-btn active" onclick="showTab('home')">Home</button>
@@ -55,13 +55,13 @@
 
         <div class="home-hero-text">
 
-          <img src="images/logo.png" alt="AccountaDay" class="home-badge-logo">
+          <img src="images/logo.png" alt="Account-A-Day" class="home-badge-logo">
 
           <h1>Achieve your personal goals with <span class="text-blue">1-on-1 
             coaching</span>.</h1>
 
           <p>Converting your ambitious goals to tangible results begins with developing good 
-            habits every single day. AccountaDay connects you directly to committed 
+            habits every single day. Account-A-Day connects you directly to committed 
             instructors who break down tough goals such as learning how to drive within 60 days, 
             studying for professional certification, or increasing your stamina into 
             easy-to-complete daily task lists. By providing you with a roadmap and frequent 
@@ -104,14 +104,14 @@
     <div id="about-page" class="tab-page">
       <div class="card card-accent-purple">
 
-        <h2>About AccountaDay</h2>
+        <h2>About Account-A-Day</h2>
 
-        <p class="about-lead">AccountaDay is a personal development and 
+        <p class="about-lead">Account-A-Day is a personal development and 
           mentoring platform designed to solve the problem of procrastination 
           through daily accountability. The failure of many challenging goals arises 
           when people try to achieve them without having any timeline or professional advice. 
           With the help of connecting the process of planning with that of implementation, 
-          AccountaDay makes it possible for everyone to get the necessary 
+          Account-A-Day makes it possible for everyone to get the necessary 
           guidance from professionals.</p>
 
       </div>
@@ -156,7 +156,7 @@
 
 
           <p>Large projects often fail because they feel too broad and overwhelming 
-            to tackle in one sitting. AccountaDay solves this by breaking every 
+            to tackle in one sitting. Account-A-Day solves this by breaking every 
             roadmap down into simple, high-priority daily tasks. Instead of worrying
              about an entire 60-day program, you only focus on checking off today's
               assigned drills, like parallel parking practice or handbook reviews, 
@@ -225,6 +225,20 @@
       </div>
 
       <div id="mentee-section-goals">
+
+        <div class="card card-accent-green">
+          <h3>Add a New Goal</h3>
+          <form onsubmit="addMenteeGoal(event)" class="coach-add-form">
+            <input type="text" id="new-goal-title" placeholder="Enter new goal (e.g. Learn SQL Basics)" required>
+            <input type="text" id="new-goal-duration" placeholder="Timeline (e.g. 30 Days)" style="flex: 1;" required>
+            <select id="new-goal-coach">
+              <option value="Dr. David Brown">Coach: Dr. David Brown</option>
+              <option value="Sarah Jenkins">Coach: Sarah Jenkins</option>
+              <option value="Marcus Vance">Coach: Marcus Vance</option>
+            </select>
+            <button type="submit" class="btn btn-green">Add Goal</button>
+          </form>
+        </div>
 
         <div class="goal-tabs-bar" id="goal-tabs-container"></div>
 
@@ -306,8 +320,6 @@
 
 
 
-
-
         <div class="card card-accent-amber">
 
           <h3>Prescribe Short Milestone</h3>
@@ -325,23 +337,16 @@
               <option value="High">Priority: High</option>
               <option value="Medium" selected>Priority: Medium</option>
               <option value="Low">Priority: Low</option>
-
-
             </select>
-
             <button type="submit" class="btn btn-blue">Assign Task</button>
-
           </form>
-
         </div>
 
+        
         <div class="card">
           <h3>Milestone Checklist</h3>
-
           <table>
-
             <thead>
-
               <tr>
                 <th>Task Description</th>
 
@@ -776,7 +781,7 @@
 
         <div class="login-left-brand">
 
-          <img src="images/logo.png" alt="AccountaDay" 
+          <img src="images/logo.png" alt="Account-A-Day" 
           class="login-hero-logo">
 
           <h1>Track Daily.<br><span class="text-blue">Achieve Big.</span></h1>
@@ -837,7 +842,7 @@
       <div class="login-split-card signup-card-accent">
 
         <div class="login-left-brand">
-          <img src="images/logo.png" alt="AccountaDay" 
+          <img src="images/logo.png" alt="Account-A-Day" 
           class="login-hero-logo">
 
           <h1>Join Our Community.<br><span class="text-purple">Start Today.
@@ -892,7 +897,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 AccountaDay. All rights reserved.</p>
+    <p>&copy; 2026 Account-A-Day. All rights reserved.</p>
   </footer>
 
 </body>
